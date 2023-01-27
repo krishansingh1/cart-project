@@ -9,6 +9,10 @@ function CartItem() {
         setQuantity(quantity + 1);
     }
 
+    const decreaseCount = () => {
+        setQuantity(quantity - 1);
+    }
+
     return (
         <div className="cart-item">
             <div className="left-block">
@@ -20,7 +24,7 @@ function CartItem() {
                 <div style={{ fontSize: 20, color: "#777" }}>Qty: {quantity}</div>
                 <div className="cart-item-actions">
                     <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" alt="increase" className="action-items" onClick={increaseCount} />
-                    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png" alt="decrease" className="action-items" />
+                    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png" alt="decrease" className="action-items" onClick={decreaseCount} />
                     <img src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png" alt="delete" className="action-items" />
                 </div>
             </div>
