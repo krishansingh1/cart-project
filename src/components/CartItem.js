@@ -10,6 +10,9 @@ function CartItem() {
     }
 
     const decreaseCount = () => {
+        if (quantity === 0) {
+            return;
+        }
         setQuantity(quantity - 1);
     }
 
