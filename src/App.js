@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <CartItem />
-      <Class />
+      {/* <Class /> */}
     </div>
   );
 }
