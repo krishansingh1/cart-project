@@ -15,7 +15,7 @@ function CartItem(props) {
   };
 
   console.log("Props:", props);
-  const { price, title } = props;
+  const { id, price, title, onDeleteProduct } = props;
   return (
     <div className="cart-item">
       <div className="left-block">
@@ -42,6 +42,7 @@ function CartItem(props) {
             src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
             alt="delete"
             className="action-items"
+            onClick={() => onDeleteProduct(id)}
           />
         </div>
       </div>
