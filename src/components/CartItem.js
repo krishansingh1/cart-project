@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function CartItem(props) {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     const increaseCount = () => {
         setQuantity(quantity + 1);
