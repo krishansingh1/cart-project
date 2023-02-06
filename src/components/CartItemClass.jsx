@@ -3,11 +3,12 @@ import React from "react";
 class CartItemClass extends React.Component {
   render() {
     const { price, title, qty } = this.props.product;
-    const { product } = this.props;
+    const { product, onIncreaseQuantiy, onDecreaseQuantiy, onDeleteProduct } =
+      this.props;
     return (
       <div className="cart-item">
         <div className="left-block">
-          <img style={styles.image}/>
+          <img style={styles.image} />
         </div>
         <div className="right-block">
           <div style={{ fontSize: 45 }}>{title}</div>
@@ -18,16 +19,19 @@ class CartItemClass extends React.Component {
               src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
               alt="increase"
               className="action-items"
+              onClick={() => onIncreaseQuantiy(product)}
             />
             <img
               src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png"
               alt="decrease"
               className="action-items"
+              onClick={() => onDecreaseQuantiy()}
             />
             <img
               src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
               alt="delete"
               className="action-items"
+              onClick={() => onDeleteProduct()}
             />
           </div>
         </div>
