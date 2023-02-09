@@ -5,7 +5,7 @@ const Navbar = () => {
         <img
           style={styles.cartIcon}
           src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
-          alt="Cart-Image"
+          alt="Cartlogo"
         />
         <span style={styles.cartCount}>3</span>
       </div>
