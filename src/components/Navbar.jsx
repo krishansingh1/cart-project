@@ -1,4 +1,4 @@
-function Navbar() {
+const Navbar = () => {
   return (
     <div style={styles.nav}>
       <div style={styles.cartIconContainer}>
@@ -11,7 +11,7 @@ function Navbar() {
       </div>
     </div>
   );
-}
+};
 
 const styles = {
   cartIcon: {
