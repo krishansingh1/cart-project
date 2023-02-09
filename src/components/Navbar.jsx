@@ -31,10 +31,9 @@ const styles = {
   },
   cartCount: {
     background: "yellow",
-    border: "1px solid red",
     borderRadius: "50%",
     position: "absolute",
-    padding: "2px 8px",
+    padding: "5px 7px",
     top: 5,
     right: 5,
   },
