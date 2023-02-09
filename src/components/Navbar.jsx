@@ -1,4 +1,4 @@
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div style={styles.nav}>
       <div style={styles.cartIconContainer}>
@@ -7,7 +7,7 @@ const Navbar = () => {
           src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png"
           alt="Cartlogo"
         />
-        <span style={styles.cartCount}>3</span>
+        <span style={styles.cartCount}>{props.count}</span>
       </div>
     </div>
   );

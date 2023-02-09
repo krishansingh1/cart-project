@@ -34,3 +34,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+#total {
+  margin-left: 3rem;
+  font-size: 2rem;
+}
