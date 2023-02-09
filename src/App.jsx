@@ -2,7 +2,7 @@ import React from "react";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
 
-class App extends React.Component() {
+class App extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -53,7 +53,7 @@ class App extends React.Component() {
   };
 
   render() {
-    const { products } = this.state.products;
+    const { products } = this.state;
     return (
       <div className="App">
         <Navbar />
