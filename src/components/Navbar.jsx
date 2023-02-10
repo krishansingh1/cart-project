@@ -33,7 +33,7 @@ const styles = {
     background: "yellow",
     borderRadius: "50%",
     position: "absolute",
-    padding: "5px 7px",
+    padding: "3px 8px",
     top: 5,
     right: 5,
   },
