@@ -2,32 +2,29 @@ import React from "react";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
 import { db } from "./firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       products: [],
+      loading: true,
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const productsRef = collection(db, "products");
 
-    try {
-      const snapshot = await getDocs(productsRef);
-
+    this.unsubscribe = onSnapshot(productsRef, (snapshot) => {
       const products = snapshot.docs.map((doc) => {
         const data = doc.data();
         data["id"] = doc.id;
         return data;
       });
 
-      this.setState({ products });
-    } catch (error) {
-      console.log(error);
-    }
+      this.setState({ products, loading: false });
+    });
   }
 
   handleIncreaseQuantity = (product) => {
@@ -93,7 +90,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { products } = this.state;
+    const { products, loading } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
@@ -103,6 +100,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
+        {loading && <h1>Loading Products...</h1>}
         <div id="total">Total : {this.getCartTotal()}</div>
       </div>
     );
