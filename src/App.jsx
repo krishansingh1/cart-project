@@ -19,7 +19,9 @@ class App extends React.Component {
       const snapshot = await getDocs(productsRef);
 
       const products = snapshot.docs.map((doc) => {
-        return doc.data();
+        const data = doc.data();
+        data["id"] = doc.id;
+        return data;
       });
 
       this.setState({ products });
