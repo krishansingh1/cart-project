@@ -8,6 +8,7 @@ import {
   addDoc,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 class App extends React.Component {
@@ -50,7 +51,7 @@ class App extends React.Component {
       qty: products[index].qty + 1,
     })
       .then(() => {
-        console.log("Updated Successfully", docRef);
+        console.log("Increased Successfully", docRef);
       })
       .catch((error) => {
         console.log("Error", error);
@@ -66,21 +67,43 @@ class App extends React.Component {
       return;
     }
 
-    products[index].qty -= 1;
+    // products[index].qty -= 1;
 
-    this.setState({
-      product,
-    });
+    // this.setState({
+    //   product,
+    // });
+
+    const productsRef = doc(db, "products", products[index].id);
+
+    const docRef = updateDoc(productsRef, {
+      qty: products[index].qty - 1,
+    })
+      .then(() => {
+        console.log("Decreased Sucessfully", docRef);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
   };
 
   handleDeleteProduct = (id) => {
     const { products } = this.state;
 
-    const items = products.filter((item) => item.id !== id);
+    // const items = products.filter((item) => item.id !== id);
 
-    this.setState({
-      products: items,
-    });
+    // this.setState({
+    //   products: items,
+    // });
+
+    const productRef = doc(db, "products", id);
+
+    const docRef = deleteDoc(productRef)
+      .then(() => {
+        console.log("Delted Successfully", docRef);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
   };
 
   getCartCount = () => {
