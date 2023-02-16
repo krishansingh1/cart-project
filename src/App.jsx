@@ -2,7 +2,7 @@ import React from "react";
 import Cart from "./components/Cart";
 import Navbar from "./components/Navbar";
 import { db } from "./firebase";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, addDoc } from "firebase/firestore";
 
 class App extends React.Component {
   constructor() {
@@ -89,11 +89,35 @@ class App extends React.Component {
     return count;
   };
 
+  addProduct = () => {
+    const productsRef = collection(db, "products");
+
+    const docRef = addDoc(productsRef, {
+      img: "https://images.unsplash.com/photo-1529336953128-a85760f58cb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      title: "Desktop",
+      price: "1399",
+      qty: 1,
+    });
+
+    docRef
+      .then((docRef) => {
+        console.log("Product is added", docRef);
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+      });
+  };
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
     const { products, loading } = this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
+        <button onClick={this.addProduct}>Add Product</button>
         <Cart
           products={products}
           onIncreaseQuantity={this.handleIncreaseQuantity}
